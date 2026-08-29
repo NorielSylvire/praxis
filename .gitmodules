@@ -1,0 +1,6 @@
+[submodule "praxis-frontend"]
+	path = praxis-frontend
+	url = git@github.com:NorielSylvire/praxis-frontend.git
+[submodule "praxis-backend"]
+	path = praxis-backend
+	url = git@github.com:NorielSylvire/praxis-backend.git
