@@ -1,4 +1,5 @@
 services:
+
   postgres:
     image: postgres:16-alpine
     container_name: praxis-db
@@ -10,6 +11,20 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./praxis-backend
+    container_name: praxis-api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/project_manager
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
     restart: unless-stopped
 
 volumes:
